@@ -17,7 +17,7 @@
                         Inicio
                     </flux:navlist.item>
 
-                    <flux:navlist.item icon="cog-6-tooth" :href="route('dashboard')" :current="request()->routeIs('ajustes')" wire:navigate>
+                    <flux:navlist.item icon="cog-6-tooth" :href="route('admin.ajustes.index')" :current="request()->routeIs('admin.ajustes.index')" wire:navigate>
                         {{ __('Ajustes') }}
                     </flux:navlist.item>
                 </flux:navlist.group>

@@ -33,3 +33,7 @@ Route::middleware(['auth'])->group(function () {
         )
         ->name('two-factor.show');
 });
+
+// Rutas para Ajustes
+Route::get('/admin/ajustes', [App\Http\Controllers\AjusteController::class, 'index'])
+    ->name('admin.ajustes.index');
