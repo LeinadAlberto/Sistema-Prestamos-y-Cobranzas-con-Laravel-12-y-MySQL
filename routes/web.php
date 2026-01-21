@@ -37,3 +37,5 @@ Route::middleware(['auth'])->group(function () {
 // Rutas para Ajustes
 Route::get('/admin/ajustes', [App\Http\Controllers\AjusteController::class, 'index'])
     ->name('admin.ajustes.index');
+Route::post('/admin/ajustes', [App\Http\Controllers\AjusteController::class, 'store'])
+    ->name('admin.ajustes.store');
