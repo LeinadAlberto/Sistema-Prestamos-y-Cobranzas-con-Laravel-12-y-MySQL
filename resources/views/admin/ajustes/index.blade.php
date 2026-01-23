@@ -11,30 +11,193 @@
                 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl">
         
         <form action="{{ url('/admin/ajustes') }}" method="POST">
+
             @csrf
+
             {{-- Body --}}
             <div class="p-6">
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
+                    {{-- Nombre de la Empresa --}}
                     <div class="mb-4">
-                        <flux:label for="site_name">
-                            Nombre de la empresa <span class="text-red-500">(*)</span>
-                        </flux:label>
+                        <flux:field>
+                            <flux:label>
+                                Nombre de la Empresa 
+                                <span class="text-red-800 ml-1" title="Campo obligatorio">
+                                    (*)
+                                </span>
+                            </flux:label>
 
-                        <flux:input type="text" name="nombre" placeholder="Ingrese el nombre de la empresa" 
-                                    icon="building-office" required />
+                            <flux:input 
+                                type="text" 
+                                name="nombre" 
+                                placeholder="Nombre Comercial" 
+                                icon="building-office" 
+                                class="mt-1"
+                                required 
+                            />
+                        
+                            <flux:error name="nombre" />
+                        </flux:field>
+                    </div>{{-- /.mb-4 --}}
 
-                        <flux:error name="nombre" />
-                    </div>
+                    {{-- Descripción --}}
+                    <div class="mb-4">
+                        <flux:field>
+                            <flux:label>Descripción</flux:label>
 
-                </div>
+                            <flux:input 
+                                name="descripcion" 
+                                icon="document-text"
+                                placeholder="Breve reseña de la empresa..."
+                                class="mt-1" 
+                            />
 
-            </div>
+                            <flux:error name="descripcion" />
+                        </flux:field>
+                    </div>{{-- /.mb-4 --}}
+
+                    {{-- Dirección --}}
+                    <div class="mb-4">
+                        <flux:field>
+                            <flux:label>
+                                Dirección 
+                                <span class="text-red-800 ml-1" title="Campo obligatorio">
+                                    (*)
+                                </span>
+                            </flux:label>
+    
+                            <flux:input 
+                                name="direccion" 
+                                icon="map-pin" 
+                                placeholder="Calle, Ciudad, País"
+                                class="mt-1" 
+                                required 
+                            />
+    
+                            <flux:error name="direccion" />
+                        </flux:field>
+                    </div>{{-- /.mb-4 --}}
+
+                    <div class="mb-4">
+                        <flux:field>
+                            <flux:label>
+                                Teléfono 
+                                <span class="text-red-800 ml-1" title="Campo obligatorio">
+                                    (*)
+                                </span>
+                            </flux:label>
+    
+                            <flux:input 
+                                name="telefono" 
+                                icon="phone" 
+                                placeholder="+00 000 000"
+                                class="mt-1" 
+                                required 
+                            />
+    
+                            <flux:error name="telefono" />
+                        </flux:field>
+                    </div>{{-- /.mb-4 --}}
+
+                    <div class="mb-4">
+                        <flux:field>
+                            <flux:label>
+                                Email de Contacto 
+                                <span class="text-red-800 ml-1" title="Campo obligatorio">
+                                    (*)
+                                </span>
+                            </flux:label>
+    
+                            <flux:input 
+                                name="email" 
+                                type="email" 
+                                icon="envelope" 
+                                placeholder="Email de contacto"
+                                class="mt-1"
+                                required 
+                            />
+    
+                            <flux:error name="email" />
+                        </flux:field>
+                    </div>{{-- /.mb-4 --}}
+
+                    <div class="mb-4">
+                        <flux:field>
+                            <flux:label>
+                                Divisa 
+                                <span class="text-red-800 ml-1" title="Campo obligatorio">
+                                    (*)
+                                </span>
+                            </flux:label>
+    
+                            <flux:select 
+                                placeholder="Selecciona una divisa..." 
+                                name="divisa"
+                                class="mt-1" 
+                                required
+                            >
+                                {{-- @foreach ($divisas as $divisa)
+    
+                                    <flux:select.option value="{{ $divisa['symbol'] }}">{{ $divisa['name'] }}
+    
+                                    </flux:select.option>
+    
+                                @endforeach --}}
+                            </flux:select>
+                        </flux:field>
+                    </div>{{-- /.mb-4 --}}
+
+                    <div class="mb-4">
+                        <flux:field>
+                            <flux:label>
+                                Tasa de Interés Mensual (%)
+                            </flux:label>
+    
+                            <flux:input 
+                                name="interes" 
+                                type="number" 
+                                step="0.01" 
+                                icon="receipt-percent"
+                                placeholder="10.00"
+                                class="mt-1" 
+                            />
+    
+                            <flux:error name="interes" />
+                        </flux:field>
+                    </div>{{-- /.mb-4 --}}
+
+                    <div class="mb-4">
+                        <flux:field>
+                            <flux:label>Tasa de Mora (%)</flux:label>
+    
+                            <flux:input 
+                                name="mora" 
+                                type="number" 
+                                step="0.01" 
+                                icon="clock" 
+                                placeholder="2.00"
+                                class="mt-1" 
+                            />
+    
+                            <flux:error name="mora" />
+                        </flux:field>
+                    </div>{{-- /.mb-4 --}}
+
+                </div>{{-- /.grid --}}
+
+            </div>{{-- /.p-6 --}}
 
             {{-- Footer --}}
-            <div class="bg-gray-50 dark:bg-neutral-700 border-t border-gray-200 
-            dark:border-gray-700 rounded-b-lg p-6 text-left">
+            <div class="bg-gray-50 
+                        dark:bg-neutral-700 
+                        border-t 
+                        border-gray-200 
+                        dark:border-gray-700 
+                        rounded-b-lg 
+                        p-6 
+                        text-left">
 
                 <div class="flex space-x-3">
                     <a href="{{ url('/login') }}" 

@@ -11,11 +11,13 @@ class AjusteController extends Controller
     }
 
     public function store(Request $request) {
+        
+        /* return response()->json($request->all()); */
+
         // Validar los datos
         $request->validate([
             'nombre' => 'required|string|max:255',
         ]);
 
-        /* return response()->json($request->all()); */
     }
 }
